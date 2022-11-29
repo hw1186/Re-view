@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+    <link rel="stylesheet" href="../static/css/about.css">
+    <div class="about-section">
+        <h1>널카말카 세미나</h1>
+        <p>이현우 & 조영국의 애니리뷰 페이지</p>
+    </div>
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="../static/images/hw.jpg" alt="hw" width="250" height="300">
+                <div class="container">
+                    <h2>이현우</h2>
+                    <p class="title">FrontEnd & DevOps</p>
+                    <p>애니 기획 및 웹사이트 디자인과 AWS 서버 운영을 담당합니다.</p>
+                    <p>Instagram : <a href="https://www.instagram.com/hw_ndf/" target="_blank">@hw_ndf</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="../static/images/jk.jpg" alt="jg" width="250" height="300">
+                <div class="container">
+                    <h2>조영국</h2>
+                    <p class="title">FrontEnd & DB</p>
+                    <p>웹사이트 디자인과 데이터베이스 관리를 담당합니다.</p>
+                    <p>Instagram : <a href="https://www.instagram.com/iam_young05/" target="_blank">@iam_young05</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

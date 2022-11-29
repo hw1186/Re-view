@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if result %}
+    {% set index = (currentPage-1) * limit %}
+    <div class="content">
+        <div class="list-body">
+            {% for anime_info in result[index : index + limit] %}
+                {% set anime_num = anime_info[0] %}
+                {% set anime_nm = anime_info[1] %}
+                {% set img_src = anime_info[2] %}
+
+                <div class="list-box">
+                    <div class="list-img">
+                        <a href="anime_num={{ anime_num }}"><img src="{{ img_src }}" width="186" height="248"></a>
+                    </div>
+                    <div class="list-txt">
+                        {% if anime_nm|length >= 14 %}
+                            <a href="anime_num={{ anime_num }}">{{ anime_nm[:14] ~ '...' }}</a>
+                        {% else %}
+                            <a href="anime_num={{ anime_num }}">{{ anime_nm }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <p>검색 결과가 없습니다.</p>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+    {% if anime_nm %}
+        {% set if_searched = "search=" ~ anime_nm ~ '&' %}
+    {% else %}
+        {% set if_searched = '' %}
+    {% endif %}
+    
+    {% if end >= 5 %}
+        {% if currentPage <= 2 %}
+            {% for i in range(1, 6) %}
+                {% if i == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% else %}<li><a href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if end == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ end }}">LAST</a></li>
+            {% else %}<li><a href="{{if_searched}}page={{ end }}">LAST</a></li>
+            {% endif %}
+
+        {% elif end - currentPage <= 2 %}
+            {% if 1 == currentPage %}<li><a class="pink" href="{{if_searched}}page=1">FIRST</a></li>
+            {% else %}<li><a href="{{if_searched}}page=1">FIRST</a></li>
+            {% endif %}
+
+            {% for i in range(end-4, end+1) %}
+                {% if i == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% else %}<li><a href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+        {% else %}
+            {% if 1 == currentPage %}<li><a class="pink" href="{{if_searched}}page=1">FIRST</a></li>
+            {% else %}<li><a href="{{if_searched}}page=1">FIRST</a></li>
+            {% endif %}
+
+            {% for i in range(currentPage-2, currentPage+2 +1) %}
+                {% if i == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% else %}<li ><a href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if end == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ end }}">LAST</a></li>
+            {% else %}<li><a href="{{if_searched}}page={{ end }}">LAST</a></li>
+            {% endif %}
+        {% endif %}
+
+    {% else %}
+        {% for i in range(1, end+1) %}
+            {% if i == currentPage %}<li><a class="pink" href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+            {% else %}<li ><a href="{{if_searched}}page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

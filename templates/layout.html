@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        {% include "navbar.html" %}
+        {% include "alert.html" %}
+        {% block content %}{% endblock %}
+    </div>
+
+    
+    <footer style="text-align: center;">
+        <ul class="list-unstyled">
+            {% block footer %}{% endblock %}
+        </ul>
+    </footer>
+</body>
+</html>

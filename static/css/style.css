@@ -1,0 +1,32 @@
+li{ display: inline-block;}
+html, body{ padding: 10px;}
+a{ color: #333;}
+
+.list-box{ 
+    display: inline-block; 
+    padding-bottom: 5px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+.list-body{
+    padding-left: 4%;
+}
+
+.list-txt{
+    text-align: center;
+    margin-top: 5px;
+}
+
+.pink{
+    background-color: pink;
+}
+
+footer a{
+    padding: 7px;
+    border: 1px solid gray;
+}
+
+body > div > div.alert.alert-warning.alert-dismissible.fade.show{
+    opacity: 1.0;
+}
